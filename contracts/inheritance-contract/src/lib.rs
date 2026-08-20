@@ -2522,7 +2522,7 @@ impl InheritanceContract {
 
         // Emit FiatPayoutRequested event if beneficiary has bank_account (fiat settlement)
         let beneficiary = plan.beneficiaries.get(index).unwrap();
-        if beneficiary.bank_account.len() > 0 {
+        if !beneficiary.bank_account.is_empty() {
             // fiat_anchor_info = "BANK" indicates bank transfer settlement
             env.events().publish(
                 (symbol_short!("F_PAYOUT"),),
